@@ -17,6 +17,7 @@ let roleCounter = true;
 app.use('/words', require('./routes/words'));
 
 io.on('connection', (socket) => {
+  console.log('tomer', socket);
   roleCounter ? (roleCounter = false) : (roleCounter = true);
   socket.on('mode picked', () => {
     socket.broadcast.emit('mode picked');
@@ -24,6 +25,7 @@ io.on('connection', (socket) => {
 
   socket.on('signed', () => {
     activePlayers++;
+    console.log('tomer', activePlayers);
     if (activePlayers === 2) {
       io.sockets.emit('game full');
     }
