@@ -4,7 +4,7 @@ const http = require('http').createServer(app);
 const cors = require('cors');
 const morgan = require('morgan');
 const io = require('socket.io')(http, {
-  cors: { origin: 'https://tomer-client-draw-guess.onrender.com' },
+  cors: { origin: '*' },
 });
 
 app.use(express.json());
@@ -28,14 +28,6 @@ io.on('connection', (socket) => {
       io.sockets.emit('game full');
     }
   });
-
-  const corsOptions = {
-    // Make sure origin contains the url your frontend is running on
-    origin: ['https://tomer-client-draw-guess.onrender.com'],
-    credentials: true,
-  };
-
-  app.use(cors(corsOptions));
 
   socket.on('check answer', (data) => {
     socket.broadcast.emit('check answer', data);
