@@ -3,7 +3,9 @@ const app = express();
 const http = require('http').createServer(app);
 const cors = require('cors');
 const morgan = require('morgan');
-const io = require('socket.io')(http, { cors: { origin: '*' } });
+const io = require('socket.io')(http, {
+  cors: { origin: 'https://tomer-client-draw-guess.onrender.com' },
+});
 
 app.use(express.json());
 app.use(cors());
