@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const io = require('socket.io')(http, {
   cors: { origin: '*' },
 });
+const path = require('path');
 
 app.use(cors());
 app.use(morgan('tiny'));
