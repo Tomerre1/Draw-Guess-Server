@@ -29,13 +29,7 @@ io.on('connection', (socket) => {
 
   const corsOptions = {
     // Make sure origin contains the url your frontend is running on
-    origin: [
-      'http://127.0.0.1:8080',
-      'http://localhost:8080',
-      'http://127.0.0.1:3000',
-      'http://localhost:3000',
-      'https://tomer-client-draw-guess.onrender.com/',
-    ],
+    origin: ['https://tomer-client-draw-guess.onrender.com'],
     credentials: true,
   };
 
@@ -74,6 +68,6 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = 3030;
 
 http.listen(PORT, () => console.log('Running on port ', PORT));
