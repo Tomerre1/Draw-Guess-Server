@@ -27,6 +27,20 @@ io.on('connection', (socket) => {
     }
   });
 
+  const corsOptions = {
+    // Make sure origin contains the url your frontend is running on
+    origin: [
+      'http://127.0.0.1:8080',
+      'http://localhost:8080',
+      'http://127.0.0.1:3000',
+      'http://localhost:3000',
+      'https://tomer-client-draw-guess.onrender.com/',
+    ],
+    credentials: true,
+  };
+
+  app.use(cors(corsOptions));
+
   socket.on('check answer', (data) => {
     socket.broadcast.emit('check answer', data);
   });
